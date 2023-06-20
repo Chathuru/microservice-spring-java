@@ -10,5 +10,5 @@ updates:
     target-branch: "main"
     schedule:
       interval: "daily"
-      time: "13:00"
+      time: "13:45"
       timezone: "Europe/London"
