@@ -21,11 +21,11 @@ jobs:
           HIK=$(echo "$INTEGRATIONS" | jq -e 'has("hik")' > /dev/null && echo true || echo false)
           ONGUARD=$(echo "$INTEGRATIONS" | jq -e 'has("onguard")' > /dev/null && echo true || echo false)
           
-          echo "AXIS - $AXIS" >> ${GITHUB_ENV}
-          echo "GEMINI - $GEMINI" >> ${GITHUB_ENV}
-          echo "VISIONLINE - $VISIONLINE" >> ${GITHUB_ENV}
-          echo "HIK - $HIK" >> ${GITHUB_ENV}
-          echo "ONGUARD - $ONGUARD" >> ${GITHUB_ENV}
+          echo "AXIS=$AXIS" >> ${GITHUB_ENV}
+          echo "GEMINI=$GEMINI" >> ${GITHUB_ENV}
+          echo "VISIONLINE=$VISIONLINE" >> ${GITHUB_ENV}
+          echo "HIK=$HIK" >> ${GITHUB_ENV}
+          echo "ONGUARD=$ONGUARD" >> ${GITHUB_ENV}
 
       - name: Build and analyze
         run: |
