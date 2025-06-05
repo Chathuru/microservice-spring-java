@@ -26,3 +26,7 @@ jobs:
           echo "VISIONLINE - $VISIONLINE" >> ${GITHUB_STEP_SUMMARY}
           echo "HIK - $HIK" >> ${GITHUB_STEP_SUMMARY}
           echo "ONGUARD - $ONGUARD" >> ${GITHUB_STEP_SUMMARY}
+
+      - name: Build and analyze
+        run: |
+          echo ${AXIS}
