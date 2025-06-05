@@ -1,0 +1,28 @@
+name: Build
+on:
+  workflow_dispatch:
+    inputs:
+      integrations:
+        type: string
+        description: "JSON"
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build and analyze
+        env:
+          INTEGRATIONS: ${{ github.event.inputs.integrations }}
+        run: |
+          AXIS=$(echo "$INTEGRATIONS" | jq -e 'has("axis")' > /dev/null && echo true || echo false)
+          GEMINI=$(echo "$INTEGRATIONS" | jq -e 'has("gemini")' > /dev/null && echo true || echo false)
+          VISIONLINE=$(echo "$INTEGRATIONS" | jq -e 'has("visionline")' > /dev/null && echo true || echo false)
+          HIK=$(echo "$INTEGRATIONS" | jq -e 'has("hik")' > /dev/null && echo true || echo false)
+          ONGUARD=$(echo "$INTEGRATIONS" | jq -e 'has("onguard")' > /dev/null && echo true || echo false)
+          
+          echo "AXIS - $AXIS" >> ${GITHUB_STEP_SUMMARY}
+          echo "GEMINI - $GEMINI" >> ${GITHUB_STEP_SUMMARY}
+          echo "VISIONLINE - $VISIONLINE" >> ${GITHUB_STEP_SUMMARY}
+          echo "HIK - $HIK" >> ${GITHUB_STEP_SUMMARY}
+          echo "ONGUARD - $ONGUARD" >> ${GITHUB_STEP_SUMMARY}
